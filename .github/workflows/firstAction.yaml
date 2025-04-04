@@ -1,25 +1,28 @@
-name: First Github Action
+name: First GitHub Action
 
 on:
- push:
-   branches:
-	- main
- pull_request:
-   branches:
-	- main
- workflow_dispatch:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:  # Manual trigger from GitHub UI
 
 jobs:
-   hello:
-      runs-on:ubuntu-latest
-      steps:
-	- uses:actions/checkout@v4
-	- name:hello world			
-	  run: echo "Hello world"
-	  shell:bash
-   good_bye:
-      runs-on:ubuntu-latest
-      steps: 
-	- name:good bye world
-	  run: echo "good bye world"
-	  shell:bash
+  hello:
+    runs-on: ubuntu-latest  # Make sure there's a space after colon
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Say Hello World
+        run: echo "Hello world"
+        shell: bash
+
+  good_bye:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Say Good Bye
+        run: echo "Good bye world"
+        shell: bash
